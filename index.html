@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Piggy Tracker 🐷</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐷</text></svg>"/>
+</head>
+<body>
+
+  <section class="main-screen" id="mainScreen">
+
+    <p class="bal-label">Total Balance</p>
+    <h1 class="bal-amount" id="balance">$0.00</h1>
+
+    <svg class="pig-svg" id="pig"></svg>
+    <span class="pig-mood" id="pigMood">Neutral Piggy 😐</span>
+    <hr class="divider"/>
+
+    <div class="totals-row">
+      <div class="total-in" id="totalIn">+$0.00</div>
+      <div class="total-out" id="totalOut">-$0.00</div>
+    </div>
+
+    <div class="chart-section">
+      <span class="chart-label">Savings vs Spending</span>
+      <div class="donut-wrap">
+        <canvas class="donut-chart" id="donutChart"></canvas>
+        <div class="donut-center">
+          <span class="donut-pct" id="donutPct">0%</span>
+          <span class="donut-sub">saved</span>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="leg"><div class="leg-dot" style="background:#3B82F6"></div>Saved</div>
+        <div class="leg"><div class="leg-dot" style="background:#E11D48"></div>Spent</div>
+      </div>
+    </div>
+     
+
+    <div class="btn-row">
+  <button class="btn-feed" id="feedBtn">
+    <svg width="54" height="54" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="22" cy="34" rx="13" ry="15" fill="#F9A8C9"/>
+      <ellipse cx="88" cy="34" rx="13" ry="15" fill="#F9A8C9"/>
+      <ellipse cx="22" cy="34" rx="7" ry="9" fill="#F472B6"/>
+      <ellipse cx="88" cy="34" rx="7" ry="9" fill="#F472B6"/>
+      <circle cx="55" cy="60" r="42" fill="#F9A8C9"/>
+      <ellipse cx="38" cy="64" rx="8" ry="6" fill="#FB7185" opacity=".25"/>
+      <ellipse cx="72" cy="64" rx="8" ry="6" fill="#FB7185" opacity=".25"/>
+      <circle cx="40" cy="53" r="5" fill="#2C1A22"/>
+      <circle cx="70" cy="53" r="5" fill="#2C1A22"/>
+      <circle cx="42" cy="51" r="1.8" fill="#fff"/>
+      <circle cx="72" cy="51" r="1.8" fill="#fff"/>
+      <ellipse cx="55" cy="70" rx="13" ry="9" fill="#F472B6" opacity=".5"/>
+      <circle cx="49" cy="70" r="3.5" fill="#C2517A" opacity=".45"/>
+      <circle cx="61" cy="70" r="3.5" fill="#C2517A" opacity=".45"/>
+      <path d="M42 83 Q55 93 68 83" stroke="#C2517A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="btn-label">Feed Piggy</div>
+    <div class="btn-sub">Add income</div>
+  </button>
+
+  <button class="btn-starve" id="starveBtn">
+    <svg width="54" height="60" viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="22" cy="34" rx="13" ry="15" fill="#F9A8C9"/>
+      <ellipse cx="88" cy="34" rx="13" ry="15" fill="#F9A8C9"/>
+      <ellipse cx="22" cy="34" rx="7" ry="9" fill="#F472B6"/>
+      <ellipse cx="88" cy="34" rx="7" ry="9" fill="#F472B6"/>
+      <circle cx="55" cy="60" r="42" fill="#F9A8C9"/>
+      <ellipse cx="38" cy="64" rx="8" ry="6" fill="#FB7185" opacity=".25"/>
+      <ellipse cx="72" cy="64" rx="8" ry="6" fill="#FB7185" opacity=".25"/>
+      <circle cx="40" cy="53" r="5" fill="#2C1A22"/>
+      <circle cx="70" cy="53" r="5" fill="#2C1A22"/>
+      <circle cx="42" cy="51" r="1.8" fill="#fff"/>
+      <circle cx="72" cy="51" r="1.8" fill="#fff"/>
+      <ellipse cx="55" cy="70" rx="13" ry="9" fill="#F472B6" opacity=".5"/>
+      <circle cx="49" cy="70" r="3.5" fill="#C2517A" opacity=".45"/>
+      <circle cx="61" cy="70" r="3.5" fill="#C2517A" opacity=".45"/>
+      <path d="M42 88 Q55 80 68 88" stroke="#C2517A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="40" cy="65" rx="2.5" ry="3.5" fill="#93C5FD" opacity=".9"/>
+      <ellipse cx="40" cy="73" rx="2" ry="3" fill="#93C5FD" opacity=".7"/>
+      <ellipse cx="70" cy="65" rx="2.5" ry="3.5" fill="#93C5FD" opacity=".9"/>
+      <ellipse cx="70" cy="73" rx="2" ry="3" fill="#93C5FD" opacity=".7"/>
+    </svg>
+    <div class="btn-label">Starve Piggy</div>
+    <div class="btn-sub">Add expense</div>
+  </button>
+</div>
+
+  </section>
+  <!-- INCOME SCREEN -->
+<section class="tx-screen" id="incomeScreen">
+  <div class="back-row">
+    <button class="back-btn" id="backFromIncome">←</button>
+    <h2 class="tx-title">Income Transactions</h2>
+  </div>
+
+  <p class="tx-section-label">All income</p>
+  <div class="tx-list" id="incomeList">
+    <p class="empty-msg">No income yet</p>
+  </div>
+
+  <button class="add-btn" id="showIncomeForm">+ Add Income</button>
+
+  <div class="add-form" id="incomeForm">
+    <p class="form-label">Add new income</p>
+    <input class="form-input" id="incomeDesc" type="text" placeholder="Description"/>
+    <input class="form-input" id="incomeAmt" type="number" placeholder="Amount $" min="0" step="0.01"/>
+    <p class="form-label">Category</p>
+    <div class="cat-row">
+      <button class="cat-btn active" id="catIncome">💰</button>
+      <button class="cat-btn">🏠</button>
+      <button class="cat-btn">🎁</button>
+      <button class="cat-btn">💼</button>
+    </div>
+    <button class="confirm-btn" id="confirmIncome">Confirm ✓</button>
+  </div>
+</section>
+
+<!-- EXPENSE SCREEN -->
+<section class="tx-screen" id="expenseScreen">
+  <div class="back-row">
+    <button class="back-btn" id="backFromExpense">←</button>
+    <h2 class="tx-title">Expense Transactions</h2>
+  </div>
+
+  <p class="tx-section-label">All expenses</p>
+  <div class="tx-list" id="expenseList">
+    <p class="empty-msg">No expenses yet</p>
+  </div>
+
+  <button class="add-btn expense" id="showExpenseForm">+ Add Expense</button>
+
+  <div class="add-form" id="expenseForm">
+    <p class="form-label">Add new expense</p>
+    <input class="form-input" id="expenseDesc" type="text" placeholder="Description"/>
+    <input class="form-input" id="expenseAmt" type="number" placeholder="Amount $" min="0" step="0.01"/>
+    <p class="form-label">Category</p>
+    <div class="cat-row">
+      <button class="cat-btn active" id="catExpense">🛒</button>
+      <button class="cat-btn">🍔</button>
+      <button class="cat-btn">🚗</button>
+      <button class="cat-btn">💊</button>
+    </div>
+    <button class="confirm-btn expense" id="confirmExpense">Confirm ✓</button>
+  </div>
+</section>
+
+  <script src="chart.umd.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
