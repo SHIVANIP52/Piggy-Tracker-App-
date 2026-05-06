@@ -8,10 +8,168 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐷</text></svg>"/>
 </head>
 <body>
+  <!-- SPLASH SCREEN -->
+<div id="splashScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(160deg,#0D0D0D 0%,#1a0810 50%,#0D0D0D 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;overflow:hidden;padding:40px 24px;font-family:'Segoe UI',sans-serif;text-align:center">
+
+  <!-- COINS -->
+  <svg style="position:absolute;left:5%;top:-20px;opacity:0;animation:rain 3.2s ease-in infinite 0s" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F" stroke="#E5A100" stroke-width="1"/><text x="9" y="13" text-anchor="middle" font-size="9" fill="#B8860B" font-weight="700">$</text></svg>
+  <svg style="position:absolute;left:15%;top:-20px;opacity:0;animation:rain 2.8s ease-in infinite 0.4s" width="14" height="14" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F"/></svg>
+  <svg style="position:absolute;left:27%;top:-20px;opacity:0;animation:rain 3.5s ease-in infinite 0.8s" width="20" height="20" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F" stroke="#E5A100" stroke-width="1"/><text x="9" y="13" text-anchor="middle" font-size="9" fill="#B8860B" font-weight="700">$</text></svg>
+  <svg style="position:absolute;left:40%;top:-20px;opacity:0;animation:rain 2.5s ease-in infinite 1.2s" width="12" height="12" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F"/></svg>
+  <svg style="position:absolute;left:54%;top:-20px;opacity:0;animation:rain 3.8s ease-in infinite 0.2s" width="16" height="16" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F" stroke="#E5A100" stroke-width="1"/><text x="9" y="13" text-anchor="middle" font-size="9" fill="#B8860B" font-weight="700">$</text></svg>
+  <svg style="position:absolute;left:65%;top:-20px;opacity:0;animation:rain 2.9s ease-in infinite 0.6s" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F"/></svg>
+  <svg style="position:absolute;left:75%;top:-20px;opacity:0;animation:rain 3.3s ease-in infinite 1s" width="14" height="14" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F"/></svg>
+  <svg style="position:absolute;left:86%;top:-20px;opacity:0;animation:rain 2.6s ease-in infinite 1.5s" width="20" height="20" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F"/></svg>
+  <svg style="position:absolute;left:92%;top:-20px;opacity:0;animation:rain 2.7s ease-in infinite 0.9s" width="12" height="12" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#F9C74F"/></svg>
+
+  <!-- PIG -->
+  <div style="animation:float 3s ease-in-out infinite;margin-bottom:28px">
+    <svg width="140" height="140" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pg2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FECDE0"/>
+          <stop offset="100%" stop-color="#F9A8C9"/>
+        </linearGradient>
+      </defs>
+      <ellipse cx="72" cy="78" rx="16" ry="20" fill="#F9A8C9"/>
+      <ellipse cx="72" cy="78" rx="9" ry="12" fill="#F472B6" opacity=".5"/>
+      <ellipse cx="128" cy="78" rx="16" ry="20" fill="#F9A8C9"/>
+      <ellipse cx="128" cy="78" rx="9" ry="12" fill="#F472B6" opacity=".5"/>
+      <circle cx="100" cy="112" r="50" fill="url(#pg2)"/>
+      <ellipse cx="82" cy="93" rx="18" ry="12" fill="#fff" opacity=".14"/>
+      <ellipse cx="60" cy="124" rx="13" ry="9" fill="#FB7185" opacity=".28"/>
+      <ellipse cx="140" cy="124" rx="13" ry="9" fill="#FB7185" opacity=".28"/>
+      <circle cx="84" cy="106" r="8" fill="#fff"/>
+      <circle cx="84" cy="107" r="5.5" fill="#2C1A22"/>
+      <circle cx="81" cy="104" r="2.2" fill="#fff"/>
+      <circle cx="116" cy="106" r="8" fill="#fff"/>
+      <circle cx="116" cy="107" r="5.5" fill="#2C1A22"/>
+      <circle cx="113" cy="104" r="2.2" fill="#fff"/>
+      <ellipse cx="100" cy="124" rx="16" ry="11" fill="#F472B6" opacity=".5"/>
+      <ellipse cx="100" cy="128" rx="11" ry="8" fill="#F472B6" opacity=".3"/>
+      <circle cx="95" cy="125" r="2.8" fill="#C2517A" opacity=".5"/>
+      <circle cx="105" cy="125" r="2.8" fill="#C2517A" opacity=".5"/>
+      <path d="M86 138 Q100 148 114 138" stroke="#C2517A" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <rect x="88" y="61" width="24" height="5" rx="2.5" fill="#C2517A" opacity=".35"/>
+    </svg>
+  </div>
+
+  <div style="background:rgba(255,248,250,0.08);border:1px solid rgba(249,168,201,0.25);border-radius:20px;padding:5px 16px;font-size:11px;font-weight:600;color:#F9A8C9;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px; display:inline-block">Personal Finance Tracker</div>
+  <div style="font-size:34px;font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:8px;text-align:center">Piggy<span style="color:#F9A8C9">Tracker</span></div>
+  <div style="font-size:13px;color:rgba(255,248,250,0.35);margin-bottom:32px;text-align:center;letter-spacing:0.5px">Smart money · Cute companion · Your way</div>
+
+  <div style="display:flex;gap:12px;margin-bottom:32px">
+    <div style="background:rgba(255,248,250,0.05);border:1px solid rgba(255,248,250,0.08);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="font-size:18px">📊</div>
+      <div style="font-size:10px;color:rgba(255,248,250,0.3);font-weight:600">Live Charts</div>
+    </div>
+    <div style="background:rgba(255,248,250,0.05);border:1px solid rgba(255,248,250,0.08);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="font-size:18px">💱</div>
+      <div style="font-size:10px;color:rgba(255,248,250,0.3);font-weight:600">23 Currencies</div>
+    </div>
+    <div style="background:rgba(255,248,250,0.05);border:1px solid rgba(255,248,250,0.08);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="font-size:18px">🔒</div>
+      <div style="font-size:10px;color:rgba(255,248,250,0.3);font-weight:600">100% Private</div>
+    </div>
+  </div>
+
+  <button onclick="showScreen('welcomeScreen')" style="background:#F9A8C9;color:#1a0810;border:none;border-radius:14px;padding:14px 48px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 32px rgba(249,168,201,0.25);font-family:'Segoe UI',sans-serif">Get Started →</button>
+
+  <div style="display:flex;gap:6px;margin-top:20px; justify-content:center">
+    <div style="width:20px;height:6px;border-radius:3px;background:#F9A8C9"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+  </div>
+</div>
+
+<!-- WELCOME SCREEN --> 
+<div id="welcomeScreen" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(160deg,#0D0D0D 0%,#1a0810 50%,#0D0D0D 100%);flex-direction:column;align-items:center;justify-content:center;z-index:999;padding:40px 24px;font-family:'Segoe UI',sans-serif;text-align:center">
+  <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="pg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FECDE0"/><stop offset="100%" stop-color="#F9A8C9"/></linearGradient></defs>
+    <ellipse cx="72" cy="78" rx="16" ry="20" fill="#F9A8C9"/><ellipse cx="72" cy="78" rx="9" ry="12" fill="#F472B6" opacity=".5"/>
+    <ellipse cx="128" cy="78" rx="16" ry="20" fill="#F9A8C9"/><ellipse cx="128" cy="78" rx="9" ry="12" fill="#F472B6" opacity=".5"/>
+    <circle cx="100" cy="112" r="50" fill="url(#pg3)"/>
+    <circle cx="84" cy="106" r="8" fill="#fff"/><circle cx="84" cy="107" r="5.5" fill="#2C1A22"/><circle cx="81" cy="104" r="2.2" fill="#fff"/>
+    <circle cx="116" cy="106" r="8" fill="#fff"/><circle cx="116" cy="107" r="5.5" fill="#2C1A22"/><circle cx="113" cy="104" r="2.2" fill="#fff"/>
+    <ellipse cx="100" cy="124" rx="16" ry="11" fill="#F472B6" opacity=".5"/>
+    <circle cx="95" cy="125" r="2.8" fill="#C2517A" opacity=".5"/><circle cx="105" cy="125" r="2.8" fill="#C2517A" opacity=".5"/>
+    <path d="M86 138 Q100 148 114 138" stroke="#C2517A" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </svg>
+  <h2 style="font-size:26px;font-weight:800;color:#fff;margin:20px 0 8px;text-align:center">Hello there! 👋</h2>
+  <p style="font-size:13px;color:rgba(255,248,250,0.4);margin-bottom:28px;text-align:center">What should Piggy call you?</p>
+  <input id="userName" type="text" placeholder="Your name..." style="width:100%;max-width:300px;background:rgba(255,248,250,0.06);border:1px solid rgba(249,168,201,0.3);border-radius:12px;padding:14px 16px;font-size:15px;color:#fff;outline:none;font-family:'Segoe UI',sans-serif;margin-bottom:16px;text-align:center"/>
+  <div style="display:flex;gap:12px;width:100%;max-width:300px;justify-content:center">
+  <button onclick="showScreen('splashScreen')" style="flex:1;background:rgba(255,248,250,0.08);color:#F9A8C9;border:1px solid rgba(249,168,201,0.3);border-radius:14px;padding:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Segoe UI',sans-serif">← Back</button>
+  <button onclick="goToTerms()" style="flex:2;background:#F9A8C9;color:#1a0810;border:none;border-radius:14px;padding:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Segoe UI',sans-serif">Continue →</button>
+</div>
+  <div style="display:flex;gap:6px;margin-top:24px">
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+    <div style="width:20px;height:6px;border-radius:3px;background:#F9A8C9"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+  </div>
+</div>
+
+<!-- TERMS SCREEN -->
+<div id="termsScreen" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(160deg,#0D0D0D 0%,#1a0810 50%,#0D0D0D 100%);flex-direction:column;align-items:center;justify-content:center;z-index:999;padding:40px 24px;font-family:'Segoe UI',sans-serif">
+  <h2 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:8px;text-align:center">Before we start 📋</h2>
+  <p style="font-size:13px;color:rgba(255,248,250,0.4);margin-bottom:20px;text-align:center">Please read our terms</p>
+  <div style="width:100%;max-width:340px;background:rgba(255,248,250,0.05);border:1px solid rgba(249,168,201,0.2);border-radius:14px;padding:16px;font-size:12px;color:rgba(255,248,250,0.5);line-height:1.8;height:200px;overflow-y:auto;margin-bottom:16px;text-align:left">
+    <strong style="color:#F9A8C9">Piggy Tracker — Terms of Use</strong><br/><br/>
+    1. Piggy Tracker is a personal finance tracking tool for informational purposes only.<br/><br/>
+    2. We do not store your data on any server. All data stays on your device only.<br/><br/>
+    3. We are not a licensed financial advisor. Please consult a professional for financial decisions.<br/><br/>
+    4. By using this app you agree to use it responsibly.<br/><br/>
+    5. Piggy Tracker is not responsible for any financial decisions made using this app.<br/><br/>
+    6. This app supports multiple currencies for tracking purposes only. Exchange rates are not live.
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;width:100%;max-width:340px">
+    <input type="checkbox" id="termsCheck" style="width:18px;height:18px;cursor:pointer;accent-color:#F9A8C9"/>
+    <label for="termsCheck" style="font-size:13px;color:rgba(255,248,250,0.5);cursor:pointer">I agree to the Terms & Conditions</label>
+  </div>
+  <div style="display:flex;gap:12px;width:100%;max-width:300px;justify-content:center">
+  <button onclick="showScreen('splashScreen')" style="flex:1;background:rgba(255,248,250,0.08);color:#F9A8C9;border:1px solid rgba(249,168,201,0.3);border-radius:14px;padding:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Segoe UI',sans-serif">← Back</button>
+  <button onclick="goToTerms()" style="flex:2;background:#F9A8C9;color:#1a0810;border:none;border-radius:14px;padding:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Segoe UI',sans-serif">Continue →</button>
+</div>
+  <div style="display:flex;gap:6px;margin-top:24px">
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+    <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.12)"></div>
+    <div style="width:20px;height:6px;border-radius:3px;background:#F9A8C9"></div>
+  </div>
+</div>
 
   <section class="main-screen" id="mainScreen">
 
     <p class="bal-label">Total Balance</p>
+    <div class="currency-row">
+  <select class="currency-select" id="currencySelect">
+    <option value="$">💵 USD - $</option>
+    <option value="€">💶 EUR - €</option>
+    <option value="£">💷 GBP - £</option>
+    <option value="₹">🇮🇳 INR - ₹</option>
+    <option value="K">🇲🇲 MMK - K</option>
+    <option value="CA$">🇨🇦 CAD - CA$</option>
+    <option value="R$">🇧🇷 BRL - R$</option>
+    <option value="R">🇿🇦 ZAR - R</option>
+    <option value="A$">🇦🇺 AUD - A$</option>
+    <option value="₽">🇷🇺 RUB - ₽</option>
+    <option value="฿">🇹🇭 THB - ฿</option>
+    <option value="₫">🇻🇳 VND - ₫</option>
+    <option value="₱">🇵🇭 PHP - ₱</option>
+    <option value="Rp">🇮🇩 IDR - Rp</option>
+    <option value="RM">🇲🇾 MYR - RM</option>
+    <option value="S$">🇸🇬 SGD - S$</option>
+    <option value="৳">🇧🇩 BDT - ৳</option>
+    <option value="रू">🇳🇵 NPR - रू</option>
+    <option value="Rs">🇱🇰 LKR - Rs</option>
+    <option value="₨">🇵🇰 PKR - ₨</option>
+    <option value="¥">🇨🇳 CNY - ¥</option>
+    <option value="¥">🇯🇵 JPY - ¥</option>
+    <option value="₩">🇰🇷 KRW - ₩</option> 
+  </select>
+</div>
     <h1 class="bal-amount" id="balance">$0.00</h1>
 
     <svg class="pig-svg" id="pig"></svg>

@@ -1,6 +1,9 @@
 // SELECT THE PIG SVG ELEMENT
 const pigSvg = document.getElementById("pig");
 
+// CURRENCY SYMBOL
+let currencySymbol = "$";
+
 // FUNCTION TO DRAW THE PIG
 function drawPig(mood) {
   const smile = `<path d="M42 83 Q55 93 68 83" stroke="#C2517A" stroke-width="2.5" fill="none" stroke-linecap="round"/>`;
@@ -10,10 +13,8 @@ function drawPig(mood) {
                  <ellipse cx="40" cy="73" rx="2" ry="3" fill="#93C5FD" opacity=".7"/>
                  <ellipse cx="70" cy="65" rx="2.5" ry="3.5" fill="#93C5FD" opacity=".9"/>
                  <ellipse cx="70" cy="73" rx="2" ry="3" fill="#93C5FD" opacity=".7"/>`;
-
   const mouth = mood === "happy" ? smile : mood === "sad" ? frown : flat;
   const tear = mood === "sad" ? tears : "";
-
   pigSvg.innerHTML = `
     <ellipse cx="22" cy="34" rx="13" ry="15" fill="#F9A8C9"/>
     <ellipse cx="88" cy="34" rx="13" ry="15" fill="#F9A8C9"/>
@@ -34,23 +35,16 @@ function drawPig(mood) {
   `;
 }
 
-// DRAW PIG ON PAGE LOAD
 drawPig("neutral");
 
 // SELECT CANVAS
-const canvas = document.getElementById('donutChart');
-const ctx = canvas.getContext('2d');
-
-// DRAW DONUT CHART
+const canvas = document.getElementById("donutChart");
+const ctx = canvas.getContext("2d");
 let chart = null;
 
 function drawChart(totalIn, totalOut) {
   const total = totalIn + totalOut;
-
-  if (chart) {
-    chart.destroy();
-  }
-
+  if (chart) chart.destroy();
   chart = new Chart(ctx, {
     type: "doughnut",
     data: {
@@ -70,16 +64,13 @@ function drawChart(totalIn, totalOut) {
         tooltip: { enabled: total > 0 },
       },
       responsive: false,
-      elements: {
-        point: { radius: 0 },
-      },
+      elements: { point: { radius: 0 } },
     },
   });
 }
+
 canvas.width = 200;
 canvas.height = 200;
-
-// DRAW CHART ON PAGE LOAD
 drawChart(0, 0);
 
 // VARIABLES
@@ -88,170 +79,226 @@ let totalIn = 0;
 let totalOut = 0;
 
 // SELECT ELEMENTS
-const balanceEl = document.getElementById('balance');
-const totalInEl = document.getElementById('totalIn');
-const totalOutEl = document.getElementById('totalOut');
-const pigMoodEl = document.getElementById('pigMood');
-const donutPctEl = document.getElementById('donutPct');
+const balanceEl = document.getElementById("balance");
+const totalInEl = document.getElementById("totalIn");
+const totalOutEl = document.getElementById("totalOut");
+const pigMoodEl = document.getElementById("pigMood");
+const donutPctEl = document.getElementById("donutPct");
 
 // UPDATE EVERYTHING ON SCREEN
 function updateUI() {
-
-  // UPDATE BALANCE
-  balanceEl.textContent = '$' + Math.abs(balance).toFixed(2);
-
-  // UPDATE TOTALS
-  totalInEl.textContent = '+$' + totalIn.toFixed(2);
-  totalOutEl.textContent = '-$' + totalOut.toFixed(2);
-
-  // UPDATE PIG MOOD
-  let mood = 'neutral';
-  let moodText = 'Neutral Piggy 😐';
-
+  balanceEl.textContent = currencySymbol + Math.abs(balance).toFixed(2);
+  totalInEl.textContent = "+" + currencySymbol + totalIn.toFixed(2);
+  totalOutEl.textContent = "-" + currencySymbol + totalOut.toFixed(2);
+  let mood = "neutral";
+  let moodText = "Neutral Piggy 😐";
   if (balance > 0) {
-    mood = 'happy';
-    moodText = 'Happy Piggy!! 🎉';
+    mood = "happy";
+    moodText = "Happy Piggy!! 🎉";
   } else if (balance < 0) {
-    mood = 'sad';
-    moodText = 'Crying Piggy 😢';
+    mood = "sad";
+    moodText = "Crying Piggy 😢";
   }
-
   pigMoodEl.textContent = moodText;
   drawPig(mood);
-
-  // UPDATE CHART
   const total = totalIn + totalOut;
-  const pct = total > 0 ? Math.round(totalIn / total * 100) : 0;
-  donutPctEl.textContent = pct + '%';
+  const pct = total > 0 ? Math.round((totalIn / total) * 100) : 0;
+  donutPctEl.textContent = pct + "%";
   drawChart(totalIn, totalOut);
 }
+
 // TRANSACTIONS STORAGE
 let incomeList = [];
 let expenseList = [];
-let selectedIncCat = '💰';
-let selectedExpCat = '🛒';
-
-const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+let selectedIncCat = "💰";
+let selectedExpCat = "🛒";
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 // SCREEN NAVIGATION
 function showScreen(screenId) {
-  document.getElementById('mainScreen').style.display = 'none';
-  document.getElementById('incomeScreen').style.display = 'none';
-  document.getElementById('expenseScreen').style.display = 'none';
-  document.getElementById(screenId).style.display = 'block';
+  // hide all screens first
+  document.getElementById("splashScreen").style.display = "none";
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("termsScreen").style.display = "none";
+  document.getElementById("mainScreen").style.display = "none";
+  document.getElementById("incomeScreen").style.display = "none";
+  document.getElementById("expenseScreen").style.display = "none";
+
+  // show the right one
+  const target = document.getElementById(screenId);
+  if (screenId === "welcomeScreen" || screenId === "termsScreen") {
+    target.style.display = "flex";
+  } else {
+    target.style.display = "block";
+  }
   window.scrollTo(0, 0);
 }
 
-// FEED PIGGY BUTTON
-document.getElementById('feedBtn').addEventListener('click', function() {
-  showScreen('incomeScreen');
+document.getElementById("feedBtn").addEventListener("click", function () {
+  showScreen("incomeScreen");
 });
-
-// STARVE PIGGY BUTTON
-document.getElementById('starveBtn').addEventListener('click', function() {
-  showScreen('expenseScreen');
+document.getElementById("starveBtn").addEventListener("click", function () {
+  showScreen("expenseScreen");
 });
+document
+  .getElementById("backFromIncome")
+  .addEventListener("click", function () {
+    showScreen("mainScreen");
+  });
+document
+  .getElementById("backFromExpense")
+  .addEventListener("click", function () {
+    showScreen("mainScreen");
+  });
 
-// BACK BUTTONS
-document.getElementById('backFromIncome').addEventListener('click', function() {
-  showScreen('mainScreen');
-});
+document
+  .getElementById("showIncomeForm")
+  .addEventListener("click", function () {
+    const form = document.getElementById("incomeForm");
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
+  });
 
-document.getElementById('backFromExpense').addEventListener('click', function() {
-  showScreen('mainScreen');
-});
+document
+  .getElementById("showExpenseForm")
+  .addEventListener("click", function () {
+    const form = document.getElementById("expenseForm");
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
+  });
 
-// SHOW/HIDE FORMS
-document.getElementById('showIncomeForm').addEventListener('click', function() {
-  const form = document.getElementById('incomeForm');
-  form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
-});
-
-document.getElementById('showExpenseForm').addEventListener('click', function() {
-  const form = document.getElementById('expenseForm');
-  form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
-});
-
-// CATEGORY SELECTION
-document.querySelectorAll('#incomeForm .cat-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('#incomeForm .cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+document.querySelectorAll("#incomeForm .cat-btn").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    document
+      .querySelectorAll("#incomeForm .cat-btn")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
     selectedIncCat = btn.textContent;
   });
 });
 
-document.querySelectorAll('#expenseForm .cat-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('#expenseForm .cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+document.querySelectorAll("#expenseForm .cat-btn").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    document
+      .querySelectorAll("#expenseForm .cat-btn")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
     selectedExpCat = btn.textContent;
   });
 });
 
 // RENDER TRANSACTION LIST
 function renderList(type) {
-  const listEl = document.getElementById(type === 'income' ? 'incomeList' : 'expenseList');
-  const txs = type === 'income' ? incomeList : expenseList;
-
+  const listEl = document.getElementById(
+    type === "income" ? "incomeList" : "expenseList",
+  );
+  const txs = type === "income" ? incomeList : expenseList;
   if (txs.length === 0) {
-    listEl.innerHTML = '<p class="empty-msg">' + (type === 'income' ? 'No income yet' : 'No expenses yet') + '</p>';
+    listEl.innerHTML =
+      '<p class="empty-msg">' +
+      (type === "income" ? "No income yet" : "No expenses yet") +
+      "</p>";
     return;
   }
-
-  listEl.innerHTML = [...txs].reverse().map(tx => `
+  listEl.innerHTML = [...txs]
+    .reverse()
+    .map(
+      (tx) => `
     <div class="tx-item">
       <div>
         <div class="tx-name">${tx.cat} ${tx.desc}</div>
         <div class="tx-date">${tx.date}</div>
       </div>
-      <div class="${type === 'income' ? 'tx-amt-inc' : 'tx-amt-exp'}">
-        ${type === 'income' ? '+' : '-'}$${tx.amt.toFixed(2)}
+      <div class="${type === "income" ? "tx-amt-inc" : "tx-amt-exp"}">
+        ${type === "income" ? "+" : "-"}${currencySymbol}${tx.amt.toFixed(2)}
       </div>
     </div>
-  `).join('');
+  `,
+    )
+    .join("");
 }
 
 // CONFIRM INCOME
-document.getElementById('confirmIncome').addEventListener('click', function() {
-  const desc = document.getElementById('incomeDesc').value.trim() || 'Income';
-  const amt = parseFloat(document.getElementById('incomeAmt').value);
+document.getElementById("confirmIncome").addEventListener("click", function () {
+  const desc = document.getElementById("incomeDesc").value.trim() || "Income";
+  const amt = parseFloat(document.getElementById("incomeAmt").value);
   if (!amt || amt <= 0) return;
-
   const d = new Date();
-  const date = months[d.getMonth()] + ' ' + d.getDate();
-
+  const date = months[d.getMonth()] + " " + d.getDate();
   incomeList.push({ desc, amt, date, cat: selectedIncCat });
   balance += amt;
   totalIn += amt;
   balance = Math.round(balance * 100) / 100;
-
-  document.getElementById('incomeDesc').value = '';
-  document.getElementById('incomeAmt').value = '';
-  document.getElementById('incomeForm').style.display = 'none';
-
-  renderList('income');
+  document.getElementById("incomeDesc").value = "";
+  document.getElementById("incomeAmt").value = "";
+  document.getElementById("incomeForm").style.display = "none";
+  renderList("income");
   updateUI();
 });
 
 // CONFIRM EXPENSE
-document.getElementById('confirmExpense').addEventListener('click', function() {
-  const desc = document.getElementById('expenseDesc').value.trim() || 'Expense';
-  const amt = parseFloat(document.getElementById('expenseAmt').value);
-  if (!amt || amt <= 0) return;
+document
+  .getElementById("confirmExpense")
+  .addEventListener("click", function () {
+    const desc =
+      document.getElementById("expenseDesc").value.trim() || "Expense";
+    const amt = parseFloat(document.getElementById("expenseAmt").value);
+    if (!amt || amt <= 0) return;
+    const d = new Date();
+    const date = months[d.getMonth()] + " " + d.getDate();
+    expenseList.push({ desc, amt, date, cat: selectedExpCat });
+    balance -= amt;
+    totalOut += amt;
+    balance = Math.round(balance * 100) / 100;
+    document.getElementById("expenseDesc").value = "";
+    document.getElementById("expenseAmt").value = "";
+    document.getElementById("expenseForm").style.display = "none";
+    renderList("expense");
+    updateUI();
+  });
 
-  const d = new Date();
-  const date = months[d.getMonth()] + ' ' + d.getDate();
+// CURRENCY SELECTOR
+document
+  .getElementById("currencySelect")
+  .addEventListener("change", function () {
+    currencySymbol = this.value;
+    updateUI();
+  });
 
-  expenseList.push({ desc, amt, date, cat: selectedExpCat });
-  balance -= amt;
-  totalOut += amt;
-  balance = Math.round(balance * 100) / 100;
+  // ONBOARDING
+function goToTerms() {
+  const name = document.getElementById('userName').value.trim();
+  if (!name) return;
+  document.getElementById('welcomeScreen').style.display = 'none';
+  const t = document.getElementById('termsScreen');
+  t.style.display = 'flex';
+}
 
-  document.getElementById('expenseDesc').value = '';
-  document.getElementById('expenseAmt').value = '';
-  document.getElementById('expenseForm').style.display = 'none';
-
-  renderList('expense');
-  updateUI();
-});
+function finishOnboarding() {
+  const checked = document.getElementById("termsCheck").checked;
+  if (!checked) {
+    alert("Please agree to the terms!");
+    return;
+  }
+  localStorage.setItem("piggyOnboarded", "true");
+  showScreen("mainScreen");
+}
+// CHECK IF ALREADY ONBOARDED
+window.addEventListener("load", function () {
+  if (localStorage.getItem("piggyOnboarded")) {
+    showScreen("mainScreen");
+  } else {
+    showScreen("splashScreen");
+  }
+}); 
