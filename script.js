@@ -276,29 +276,31 @@ document
     updateUI();
   });
 
-  // ONBOARDING
+ // ONBOARDING
 function goToTerms() {
   const name = document.getElementById('userName').value.trim();
-  if (!name) return;
-  document.getElementById('welcomeScreen').style.display = 'none';
-  const t = document.getElementById('termsScreen');
-  t.style.display = 'flex';
+  if (!name) {
+    alert('Please enter your name!');
+    return;
+  }
+  showScreen('termsScreen');
 }
 
 function finishOnboarding() {
-  const checked = document.getElementById("termsCheck").checked;
+  const checked = document.getElementById('termsCheck').checked;
   if (!checked) {
-    alert("Please agree to the terms!");
+    alert('Please agree to the terms!');
     return;
   }
-  localStorage.setItem("piggyOnboarded", "true");
-  showScreen("mainScreen");
+  localStorage.setItem('piggyOnboarded', 'true');
+  showScreen('mainScreen');
 }
+
 // CHECK IF ALREADY ONBOARDED
-window.addEventListener("load", function () {
-  if (localStorage.getItem("piggyOnboarded")) {
-    showScreen("mainScreen");
+window.addEventListener('load', function() {
+  if (localStorage.getItem('piggyOnboarded')) {
+    showScreen('mainScreen');
   } else {
-    showScreen("splashScreen");
+    showScreen('splashScreen');
   }
-}); 
+});
